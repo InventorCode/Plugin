@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AddinPluginPack", "src\AddinPluginPack.csproj", "{72F13566-8F0A-4A74-8FA5-25D2A83525FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPlugin", "src\IPlugin.csproj", "{72F13566-8F0A-4A74-8FA5-25D2A83525FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

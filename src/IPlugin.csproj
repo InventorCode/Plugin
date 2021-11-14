@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>IPlugin</RootNamespace>
+    <RootNamespace>jordanrobot.IPlugin</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>

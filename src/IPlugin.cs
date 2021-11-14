@@ -1,4 +1,4 @@
-﻿namespace PlugableAddin
+﻿namespace jordanrobot.IPlugin
 {
     public interface IPlugin
     {
