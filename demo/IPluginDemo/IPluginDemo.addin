@@ -1,0 +1,14 @@
+<Addin Type="Standard">
+  <!--Created for Autodesk Inventor Version 25.0-->
+  <ClassId>{7F39964A-C0DC-4BC7-948E-4B0A060256D1}</ClassId>
+  <ClientId>{7F39964A-C0DC-4BC7-948E-4B0A060256D1}</ClientId>
+  <DisplayName>IPluginDemo</DisplayName>
+  <Description>Addin description</Description>
+  <Assembly>IPluginDemo.dll</Assembly>
+  <LoadOnStartUp>1</LoadOnStartUp>
+  <UserUnloadable>1</UserUnloadable>
+  <Hidden>0</Hidden>
+  <SupportedSoftwareVersionGreaterThan>15..</SupportedSoftwareVersionGreaterThan>
+  <DataVersion>1</DataVersion>
+  <UserInterfaceVersion>1</UserInterfaceVersion>
+</Addin>
