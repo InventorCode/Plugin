@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>AddinPluginPack</RootNamespace>
+    <RootNamespace>IPlugin</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>AddinPluginPack</AssemblyName>
+    <AssemblyName>jordanrobot.IPlugin</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>jordanrobot</Authors>
     <Company></Company>
@@ -29,7 +29,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <Version>0.1.0</Version>
     <PackageProjectUrl></PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jordanrobot/AddinPluginPack</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jordanrobot/IPlugin</RepositoryUrl>
     <AssemblyVersion>0.1.0.0</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
