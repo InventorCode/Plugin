@@ -3,6 +3,10 @@ using Microsoft.Win32;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.ComponentModel.Composition.Hosting;
+using System.ComponentModel.Composition;
+using jordanrobot.IPlugin;
+using System.Collections.Generic;
 
 namespace IPluginDemo
 {
@@ -19,8 +23,27 @@ namespace IPluginDemo
         // Inventor application object.
         private Inventor.Application m_inventorApplication;
 
+        [ImportMany(typeof(IPlugin))]
+        List<IPlugin> plugins = new List<IPlugin> { };
+
         public StandardAddInServer()
         {
+            ComposePlugins();
+        }
+
+        private void ComposePlugins()
+        {
+            //Wire up MEF parts
+            var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            path = System.IO.Path.GetDirectoryName(path);
+            path = System.IO.Path.Combine(path, "plugins");
+            var directoryCatalog = new DirectoryCatalog(path);
+            var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetExecutingAssembly());
+
+            var catalog = new AggregateCatalog(directoryCatalog, assemblyCatalog);
+
+            CompositionContainer container = new CompositionContainer(catalog);
+            container.SatisfyImportsOnce(this);
         }
 
         #region ApplicationAddInServer Members
@@ -34,7 +57,10 @@ namespace IPluginDemo
             // Initialize AddIn members.
             m_inventorApplication = addInSiteObject.Application;
 
-            // MessageBox.Show("Hello!");
+            foreach (var item in plugins)
+            {
+                item.Activate(m_inventorApplication, "7F39964A-C0DC-4BC7-948E-4B0A060256D1");
+            }
             // TODO: Add ApplicationAddInServer.Activate implementation.
             // e.g. event initialization, command creation etc.
         }
@@ -46,7 +72,10 @@ namespace IPluginDemo
             // when the Inventor session is terminated
 
             // TODO: Add ApplicationAddInServer.Deactivate implementation
-
+            foreach (var item in plugins)
+            {
+                item.Deactivate();
+            }
             // Release objects.
             m_inventorApplication = null;
 
