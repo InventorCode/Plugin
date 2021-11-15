@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <RootNamespace>PluginDemo</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>PluginExample</AssemblyName>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>addin author</Authors>
+    <Company></Company>
+    <Product></Product>
+    <Description></Description>
+    <Copyright></Copyright>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>../../artifacts/plugins</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>../../artifacts/plugins</OutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="jordanrobot.IPlugin" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Autodesk.Inventor.Interop">
+      <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2021\Bin\Public Assemblies\Autodesk.Inventor.Interop.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\IPluginDemo\plugins\&quot; /Y /R)" />
+    </Target>
+</Project>
