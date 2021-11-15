@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jordanrobot.IPlugin" Version="0.1.0" />
+    <PackageReference Include="jordanrobot.IPlugin" Version="0.2.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,9 +40,7 @@
       <Private>false</Private>
       <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition">
-      <Private>true</Private>
-    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 

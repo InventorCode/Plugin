@@ -1,2 +1,2 @@
 nuget pack
-nuget push jordanrobot.IPlugin.0.1.0.nupkg <APIKEY> -Source https://api.nuget.org/v3/index.json
+nuget push jordanrobot.IPlugin.0.2.0.nupkg <APIKEY> -Source https://api.nuget.org/v3/index.json

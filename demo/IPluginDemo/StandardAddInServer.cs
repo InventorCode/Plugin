@@ -3,8 +3,6 @@ using Microsoft.Win32;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.ComponentModel.Composition.Hosting;
-using System.ComponentModel.Composition;
 using jordanrobot.IPlugin;
 using System.Collections.Generic;
 
@@ -23,28 +21,14 @@ namespace IPluginDemo
         // Inventor application object.
         private Inventor.Application m_inventorApplication;
 
-        [ImportMany(typeof(IPlugin))]
-        List<IPlugin> plugins = new List<IPlugin> { };
+        private PluginHost pluginHost = new PluginHost();
+        private List<IPlugin> plugins = new List<IPlugin> { };
 
         public StandardAddInServer()
         {
-            ComposePlugins();
+            plugins = pluginHost.ComposePlugins();
         }
 
-        private void ComposePlugins()
-        {
-            //Wire up MEF parts
-            var path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            path = System.IO.Path.GetDirectoryName(path);
-            path = System.IO.Path.Combine(path, "plugins");
-            var directoryCatalog = new DirectoryCatalog(path);
-            var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetExecutingAssembly());
-
-            var catalog = new AggregateCatalog(directoryCatalog, assemblyCatalog);
-
-            CompositionContainer container = new CompositionContainer(catalog);
-            container.SatisfyImportsOnce(this);
-        }
 
         #region ApplicationAddInServer Members
 
@@ -76,6 +60,9 @@ namespace IPluginDemo
             {
                 item.Deactivate();
             }
+
+            pluginHost.Dispose();
+
             // Release objects.
             m_inventorApplication = null;
 

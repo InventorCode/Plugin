@@ -6,7 +6,7 @@ using jordanrobot.IPlugin;
 
 namespace IPluginDemo
 {
-    class PluginHost
+    public class PluginHost
     {
         [ImportMany(typeof(IPlugin))]
         List<IPlugin> plugins = new List<IPlugin> { };
