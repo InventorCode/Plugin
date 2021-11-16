@@ -11,7 +11,7 @@
     <Authors>jordanrobot</Authors>
     <Company></Company>
     <Product></Product>
-    <Description>A simple library to define IPlugin interfaces; used in Autodesk Inventor addin MEF plugins.  This this repo for a sample application... https://github.com/jordanrobot/plugable-addin</Description>
+    <Description>A simple library to define IPlugin interfaces; used in Autodesk Inventor addin MEF plugins.  This this repo for a sample application... https://github.com/jordanrobot/IPlugin</Description>
     <Copyright>2021</Copyright>
   </PropertyGroup>
 
