@@ -9,7 +9,7 @@ This package allows the user to quickly create a plugin architecture within an A
 1. Simplify bundling multiple related or unrelated tools into a single add-in.
 1. Effectively eliminate the coupling between these tools.
 1. Enable the developer to manage and store addins and tools in seperate locations
-1. Enables development of tools and the main addin by seperate parties.
+1. Enables development of tools and the main addin by separate parties/teams.
 
 ## Installation
 
@@ -107,7 +107,7 @@ namespace IPluginDemo
 
 By default, the plugins directory is located in: /Addin Directory/Plugins/
 If you want to specify a plugin directory from which to load the plugin dlls, you can do so with the following call:
-`pluginHost.PluginsPath = "C:/Path/To/Plugin/Dll/Files/`
+`pluginHost.PluginsPath = "C:/Path/To/Plugin/Dll/Files/"`
 After that, call the `pluginHost.ComposePlugins()` method and the new directory location will by dynamically searched for qualifying assemblies.
 
 
