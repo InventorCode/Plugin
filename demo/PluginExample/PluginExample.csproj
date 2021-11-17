@@ -8,7 +8,7 @@
   <PropertyGroup>
     <AssemblyName>PluginExample</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>addin author</Authors>
+    <Authors>jordanrobot</Authors>
     <Company></Company>
     <Product></Product>
     <Description></Description>
@@ -29,7 +29,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jordanrobot.IPlugin" Version="0.2.1" />
+    <PackageReference Include="jordanrobot.IPlugin" Version="0.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +42,6 @@
 
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-	  <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\IPluginDemo\Plugins\&quot; /Y /R)" />
+	  <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\AddinDemo\Plugins\&quot; /Y /R)" />
     </Target>
 </Project>

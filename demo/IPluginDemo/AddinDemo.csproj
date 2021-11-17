@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>IPluginDemo</RootNamespace>
+    <RootNamespace>AddinDemo</RootNamespace>
     <ApplicationManifest>addin.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>IPluginDemo</AssemblyName>
+    <AssemblyName>AddinDemo</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>addin author</Authors>
+    <Authors>jordanrobot</Authors>
     <Company></Company>
     <Product></Product>
     <Description></Description>
@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jordanrobot.IPlugin" Version="0.2.1" />
+    <PackageReference Include="jordanrobot.IPlugin" Version="0.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +45,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="IPluginDemo.addin">
+    <None Update="AddinDemo.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="addin.manifest">
@@ -54,6 +54,6 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(ProjectDir)IPluginDemo.addin&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(TargetDir)jordanrobot.IPlugin.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;XCopy &quot;$(TargetDir)System.ComponentModel.Composition.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;)" />
+    <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(ProjectDir)AddinDemo.addin&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(TargetDir)jordanrobot.IPlugin.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;XCopy &quot;$(TargetDir)System.ComponentModel.Composition.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;)" />
   </Target>
 </Project>
