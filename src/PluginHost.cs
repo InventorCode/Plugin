@@ -7,7 +7,10 @@ namespace jordanrobot.IPlugin
     public class PluginHost
     {
         [ImportMany(typeof(IPlugin))]
-        List<IPlugin> plugins = new List<IPlugin> { };
+        private List<IPlugin> plugins = new List<IPlugin> { };
+
+        public List<IPlugin> Plugins
+        { get { return plugins; } }
 
         public string PluginsPath { get; set; }
         public CompositionContainer Container { set; get; }
@@ -16,7 +19,7 @@ namespace jordanrobot.IPlugin
         {
         }
 
-        public List<IPlugin> ComposePlugins()
+        public void ComposePlugins()
         {
             //Wire up MEF parts
             if (string.IsNullOrEmpty(PluginsPath))
@@ -30,8 +33,6 @@ namespace jordanrobot.IPlugin
 
             Container = new CompositionContainer(catalog);
             Container.SatisfyImportsOnce(this);
-
-            return plugins;
         }
 
         private static string ReturnDefaultPluginPath()
@@ -41,8 +42,21 @@ namespace jordanrobot.IPlugin
             return System.IO.Path.Combine(pluginPath, "Plugins");
         }
 
-        public void Dispose()
+        public void ActivateAll(Inventor.Application invApp, string guid, bool firstTime = true)
         {
+            foreach (var item in plugins)
+            {
+                item.Activate(invApp, guid);
+            }
+        }
+
+        public void DeactivateAll()
+        {
+            foreach (var item in plugins)
+            {
+                item.Deactivate();
+            }
+
             Container.Dispose();
         }
     }
