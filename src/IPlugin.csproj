@@ -11,8 +11,9 @@
     <Authors>jordanrobot</Authors>
     <Company></Company>
     <Product></Product>
-    <Description>A simple library to define IPlugin interfaces; used in Autodesk Inventor addin MEF plugins.  This this repo for a sample application... https://github.com/jordanrobot/IPlugin</Description>
+    <Description>A simple library to enable MEF plugins within custom Autodesk Inventor addins.</Description>
     <Copyright>2021</Copyright>
+	  <RepositoryUrl>https://github.com/jordanrobot/IPlugin</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -27,10 +28,10 @@
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <Version>0.2.1</Version>
+    <Version>0.3.0</Version>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/jordanrobot/IPlugin</RepositoryUrl>
-    <AssemblyVersion>0.1.0.0</AssemblyVersion>
+    <AssemblyVersion>0.3.0.0</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
