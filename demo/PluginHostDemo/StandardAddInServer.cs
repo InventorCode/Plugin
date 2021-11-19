@@ -3,10 +3,10 @@ using Microsoft.Win32;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using jordanrobot.IPlugin;
+using InventorCode.Plugin;
 using System.Collections.Generic;
 
-namespace AddinDemo
+namespace PluginHostDemo
 {
     [ProgId("AddinDemo.StandardAddinServer")]
     [GuidAttribute("7F39964A-C0DC-4BC7-948E-4B0A060256D1")]
