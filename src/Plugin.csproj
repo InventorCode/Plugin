@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>jordanrobot.IPlugin</RootNamespace>
+    <RootNamespace>InventorCode.Plugin</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>jordanrobot.IPlugin</AssemblyName>
+    <AssemblyName>InventorCode.Plugin</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>jordanrobot</Authors>
+    <Authors>Matthew D. Jordan</Authors>
     <Company></Company>
     <Product></Product>
-    <Description>A simple library to enable MEF plugins within custom Autodesk Inventor addins.</Description>
+    <Description>A simple library to utilize MEF plugins within your Autodesk Inventor addins.</Description>
     <Copyright>2021</Copyright>
-	  <RepositoryUrl>https://github.com/jordanrobot/IPlugin</RepositoryUrl>
+	  <RepositoryUrl>https://github.com/InventorCode/Plugin</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -28,10 +28,10 @@
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <PackageProjectUrl></PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jordanrobot/IPlugin</RepositoryUrl>
-    <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <RepositoryUrl>https://github.com/InventorCode/Plugin</RepositoryUrl>
+    <AssemblyVersion>0.4.0.0</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 

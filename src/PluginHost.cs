@@ -2,7 +2,7 @@
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 
-namespace jordanrobot.IPlugin
+namespace InventorCode.Plugin
 {
     public class PluginHost
     {
