@@ -3,7 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using jordanrobot.IPlugin;
+using InventorCode.Plugin;
 using System.ComponentModel.Composition;
 
 namespace PluginDemo
@@ -29,11 +29,11 @@ namespace PluginDemo
         {
             _inventorApplication = InventorApplication;
             _clientId = ClientId;
-
+            MessageBox.Show("PluginDemo Loaded.");
             //Create dockable window
-            dockableWindow = _inventorApplication.UserInterfaceManager.DockableWindows.Add(ClientId,
-                "dockable_window.StandardAddInServer.dockableWindow", "IPluginDemo - Plugin sample");
-            dockableWindow.ShowVisibilityCheckBox = true;
+            //dockableWindow = _inventorApplication.UserInterfaceManager.DockableWindows.Add(ClientId,
+            //    "dockable_window.StandardAddInServer.dockableWindow", "IPluginDemo - Plugin sample");
+            //dockableWindow.ShowVisibilityCheckBox = true;
         }
 
         public void Deactivate()

@@ -1,4 +1,4 @@
-﻿namespace jordanrobot.IPlugin
+﻿namespace InventorCode.Plugin
 {
     public interface IPlugin
     {

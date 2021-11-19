@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
-    <RootNamespace>AddinDemo</RootNamespace>
+    <RootNamespace>PluginHostDemo</RootNamespace>
     <ApplicationManifest>addin.manifest</ApplicationManifest>
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>AddinDemo</AssemblyName>
+    <AssemblyName>PluginHostDemo</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Authors>jordanrobot</Authors>
+    <Authors>Matthew D. Jordan</Authors>
     <Company></Company>
     <Product></Product>
     <Description></Description>
@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="jordanrobot.IPlugin" Version="0.3.0" />
+    <PackageReference Include="InventorCode.Plugin" Version="0.4.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -40,12 +40,14 @@
       <Private>false</Private>
       <EmbedInteropTypes>false</EmbedInteropTypes>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>true</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="AddinDemo.addin">
+    <None Update="PluginHostDemo.addin">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="addin.manifest">
@@ -54,6 +56,6 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(ProjectDir)AddinDemo.addin&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(TargetDir)jordanrobot.IPlugin.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;XCopy &quot;$(TargetDir)System.ComponentModel.Composition.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;)" />
+    <Exec Command="if $(ConfigurationName)==Debug (&#xD;&#xA;XCopy &quot;$(TargetPath)&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(ProjectDir)PluginHostDemo.addin&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y /R&#xD;&#xA;XCopy &quot;$(TargetDir)InventorCode.Plugin.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;XCopy &quot;$(TargetDir)System.ComponentModel.Composition.dll&quot; &quot;%25AppData%25\Autodesk\ApplicationPlugins\$(TargetName)\&quot; /Y&#xD;&#xA;)" />
   </Target>
 </Project>
