@@ -16,11 +16,11 @@
   </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>../../artifacts/plugins</OutputPath>
+		<OutputPath>../../artifacts/Plugins</OutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-		<OutputPath>../../artifacts/plugins</OutputPath>
+		<OutputPath>../../artifacts/Plugins</OutputPath>
 	</PropertyGroup>
 
 	<PropertyGroup>

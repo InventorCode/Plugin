@@ -4,7 +4,6 @@ using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using InventorCode.Plugin;
-using System.Collections.Generic;
 
 namespace PluginHostDemo
 {

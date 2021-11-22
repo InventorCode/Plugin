@@ -24,16 +24,11 @@ namespace PluginDemo
         private Inventor.Application _inventorApplication;
         private string _clientId;
 
-        private DockableWindow dockableWindow;
         public void Activate(Inventor.Application InventorApplication, string ClientId, bool firstTime = true)
         {
             _inventorApplication = InventorApplication;
             _clientId = ClientId;
             MessageBox.Show("PluginDemo Loaded.");
-            //Create dockable window
-            //dockableWindow = _inventorApplication.UserInterfaceManager.DockableWindows.Add(ClientId,
-            //    "dockable_window.StandardAddInServer.dockableWindow", "IPluginDemo - Plugin sample");
-            //dockableWindow.ShowVisibilityCheckBox = true;
         }
 
         public void Deactivate()
