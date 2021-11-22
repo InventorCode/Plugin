@@ -36,7 +36,7 @@ namespace InventorCode.Plugin
                 PluginsPath = ReturnDefaultPluginPath();
             }
 
-            var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetExecutingAssembly());
+            var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetCallingAssembly());
             
             if (PluginDirectoryExists())
             {
