@@ -40,7 +40,7 @@ namespace InventorCode.Plugin
                 RecursivedMefPluginLoader(catalog, PluginsPath);
                 Container = new CompositionContainer(catalog);
                 Container.SatisfyImportsOnce(this);
-            }
+            } else
             {
                 Container = new CompositionContainer(assemblyCatalog);
                 Container.SatisfyImportsOnce(this);
