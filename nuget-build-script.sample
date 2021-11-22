@@ -1,2 +1,2 @@
 nuget pack
-nuget push InventorCode.Plugin.0.4.0.nupkg -Source https://api.nuget.org/v3/index.json
+nuget push InventorCode.Plugin.0.4.1.nupkg -Source https://api.nuget.org/v3/index.json

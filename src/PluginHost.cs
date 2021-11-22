@@ -40,14 +40,34 @@ namespace InventorCode.Plugin
             
             if (PluginDirectoryExists())
             {
-                var directoryCatalog = new DirectoryCatalog(PluginsPath);
-                var catalog = new AggregateCatalog(directoryCatalog, assemblyCatalog);
+                var catalog = new AggregateCatalog(assemblyCatalog);
+                RecursivedMefPluginLoader(catalog, PluginsPath);
                 Container = new CompositionContainer(catalog);
                 Container.SatisfyImportsOnce(this);
             }
             {
                 Container = new CompositionContainer(assemblyCatalog);
                 Container.SatisfyImportsOnce(this);
+            }
+        }
+
+        private void RecursivedMefPluginLoader(AggregateCatalog catalog, string path)
+        {
+            Queue<string> directories = new Queue<string>();
+            directories.Enqueue(path);
+            while (directories.Count > 0)
+            {
+                var directory = directories.Dequeue();
+                //Load plugins in this folder
+                var directoryCatalog = new DirectoryCatalog(directory);
+                catalog.Catalogs.Add(directoryCatalog);
+
+                //Add subDirectories to the queue
+                var subDirectories = System.IO.Directory.GetDirectories(directory);
+                foreach (string subDirectory in subDirectories)
+                {
+                    directories.Enqueue(subDirectory);
+                }
             }
         }
 
