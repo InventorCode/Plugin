@@ -28,11 +28,11 @@
   <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <PackageProjectUrl></PackageProjectUrl>
 	<PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/InventorCode/Plugin</RepositoryUrl>
-    <AssemblyVersion>0.4.1.0</AssemblyVersion>
+    <AssemblyVersion>0.4.2.0</AssemblyVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
