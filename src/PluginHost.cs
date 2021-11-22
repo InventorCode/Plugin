@@ -19,6 +19,15 @@ namespace InventorCode.Plugin
         {
         }
 
+        private bool PluginDirectoryExists()
+        {
+            var fullExecutingAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var pluginPath = System.IO.Path.GetDirectoryName(fullExecutingAssemblyPath);
+            pluginPath = System.IO.Path.Combine(pluginPath, "Plugins");
+
+            return System.IO.Directory.Exists(pluginPath);
+        }
+
         public void ComposePlugins()
         {
             //Wire up MEF parts
@@ -28,11 +37,18 @@ namespace InventorCode.Plugin
             }
 
             var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetExecutingAssembly());
-            var directoryCatalog = new DirectoryCatalog(PluginsPath);
-            var catalog = new AggregateCatalog(directoryCatalog, assemblyCatalog);
-
-            Container = new CompositionContainer(catalog);
-            Container.SatisfyImportsOnce(this);
+            
+            if (PluginDirectoryExists())
+            {
+                var directoryCatalog = new DirectoryCatalog(PluginsPath);
+                var catalog = new AggregateCatalog(directoryCatalog, assemblyCatalog);
+                Container = new CompositionContainer(catalog);
+                Container.SatisfyImportsOnce(this);
+            }
+            {
+                Container = new CompositionContainer(assemblyCatalog);
+                Container.SatisfyImportsOnce(this);
+            }
         }
 
         private static string ReturnDefaultPluginPath()
