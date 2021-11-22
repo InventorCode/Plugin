@@ -27,7 +27,7 @@ namespace InventorCode.Plugin
         public void ComposePlugins()
         {
             //Wire up MEF parts
-            if (string.IsNullOrEmpty(PluginsPath))
+            if (string.IsNullOrEmpty(PluginsPath) || !System.IO.Directory.Exists(PluginsPath))
             {
                 PluginsPath = ReturnDefaultPluginPath();
             }
