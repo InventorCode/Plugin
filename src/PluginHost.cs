@@ -19,13 +19,9 @@ namespace InventorCode.Plugin
         {
         }
 
-        private bool PluginDirectoryExists()
+        private bool DirectoryExists(string testString)
         {
-            var fullExecutingAssemblyPath = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            var pluginPath = System.IO.Path.GetDirectoryName(fullExecutingAssemblyPath);
-            pluginPath = System.IO.Path.Combine(pluginPath, "Plugins");
-
-            return System.IO.Directory.Exists(pluginPath);
+            return System.IO.Directory.Exists(testString);
         }
 
         public void ComposePlugins()
@@ -38,7 +34,7 @@ namespace InventorCode.Plugin
 
             var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetCallingAssembly());
             
-            if (PluginDirectoryExists())
+            if (DirectoryExists(PluginsPath))
             {
                 var catalog = new AggregateCatalog(assemblyCatalog);
                 RecursivedMefPluginLoader(catalog, PluginsPath);
