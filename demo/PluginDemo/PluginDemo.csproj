@@ -9,9 +9,10 @@
     <AssemblyName>PluginDemo</AssemblyName>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>Matthew D. Jordan</Authors>
+	<Version>0.1.0</Version>
     <Company></Company>
     <Product></Product>
-    <Description></Description>
+    <Description>This is a description.</Description>
     <Copyright></Copyright>
   </PropertyGroup>
 
@@ -29,14 +30,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="InventorCode.Plugin" Version="0.4.2" />
+	  <PackageReference Include="InventorCode.Plugin" Version="0.5.0-alpha" />
 	</ItemGroup>
 
   <ItemGroup>
     <Reference Include="Autodesk.Inventor.Interop">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Inventor 2021\Bin\Public Assemblies\Autodesk.Inventor.Interop.dll</HintPath>
     </Reference>
-    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition">
+      <Private>true</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 

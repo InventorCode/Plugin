@@ -28,5 +28,33 @@ namespace PluginTests
 
             Assert.AreEqual(2, plugins.Count());
         }
+
+        [Test]
+        public void PluginHost_CanAccessName()
+        {
+            var host = new PluginHost();
+            host.ComposePlugins();
+            var plugins = host.Plugins;
+
+            var answer = from IPlugin plugin in plugins
+                         where plugin.Name == "This is a name."
+                         select plugin.Name;
+
+            Assert.AreEqual(answer.Single(), "This is a name.");
+        }
+
+        [Test]
+        public void PluginHost_CanAccessVersion()
+        {
+            var host = new PluginHost();
+            host.ComposePlugins();
+            var plugins = host.Plugins;
+
+            var answer = from IPlugin plugin in plugins
+                         where plugin.Version == "This is a version."
+                         select plugin.Version;
+
+            Assert.AreEqual(answer.Single(), "This is a version.");
+        }
     }
 }

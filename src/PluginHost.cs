@@ -33,7 +33,7 @@ namespace InventorCode.Plugin
             }
 
             var assemblyCatalog = new AssemblyCatalog(System.Reflection.Assembly.GetCallingAssembly());
-            
+
             if (DirectoryExists(PluginsPath))
             {
                 var catalog = new AggregateCatalog(assemblyCatalog);

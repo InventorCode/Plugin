@@ -1,5 +1,6 @@
 ﻿using InventorCode.Plugin;
 using System.ComponentModel.Composition;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace PluginHostDemo
@@ -14,7 +15,7 @@ namespace PluginHostDemo
         {
             _inventorApplication = InventorApplication;
             _clientId = ClientId;
-            MessageBox.Show("EmbeddedPluginDemo Loaded.");
+            MessageBox.Show("EmbeddedPluginDemo Loaded with " + Name + " ver: " + Version) ;
         }
 
         public void Deactivate()
@@ -24,6 +25,29 @@ namespace PluginHostDemo
 
         public void Execute()
         {
+        }
+
+        public Inventor.CommandControl ExecuteSettings { get => null; }
+
+        public string Name { get => Assembly.GetExecutingAssembly().GetName().FullName; }
+
+        public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+
+        public string Description
+        {
+            get
+            {
+                var assembly = typeof(IPlugin).Assembly;
+                object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+
+                AssemblyProductAttribute attribute = null;
+                if (attributes.Length > 0)
+                {
+                    attribute = attributes[0] as AssemblyProductAttribute;
+                    return attribute.ToString();
+                }
+                return null;
+            }
         }
     }
 }
