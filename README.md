@@ -37,6 +37,9 @@ To help remedy this, we can decouple the tools/plugins from each other entirely.
     - `Execute()`: Executes whatever you want; accessible from the calling assembly.
     - `Activate(Inventor.Application inventorApplication, string ClientId, bool firstTime = true)`
     - `Deactivate()`: Deactivates the plugin
+    - `Name`: Name of the plugin, as a string. Read-only.
+    - `Version`: Version of the assembly, as a string. Read-only.
+    - `ExecuteSettings`: an `Inventor.CommandControl` object that lets you activate settings from the HostPlugin.
 
 
 In the demo project below, when the addin is started:
@@ -66,114 +69,15 @@ This project contains a [Demo solution](https://github.com/InventorCode/Plugin/t
 
 ### AddinDemo
 
-This is the addin class that implements the `Inventor.ApplicationAddInServer`.  
-
-```C#
-using Inventor;
-using Microsoft.Win32;
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using InventorCode.Plugin;
-using System.Collections.Generic;
-
-namespace PluginHostDemo
-{
-    [ProgId("PluginHostDemo.StandardAddinServer")]
-    [GuidAttribute("7F39964A-C0DC-4BC7-948E-4B0A060256D1")]
-    public class StandardAddInServer : Inventor.ApplicationAddInServer
-    {
-        private Inventor.Application m_inventorApplication;
-
-        // Create an instance of the PluginHost class in the package.  This contains
-        // the code to wire up the plugins dynamically.
-        private PluginHost pluginHost = new PluginHost();
-        
-        public StandardAddInServer()
-        {
-            // Here we will actually wire up the plugins by collecting classes with advertised
-            // Plugin interfaces into our PluginHost object.  If you need granular control, you
-            // can manually compose these using MEF. See the IPluginHost class to get you started.
-            pluginHost.ComposePlugins();
-        }
-
-
-        public void Activate(Inventor.ApplicationAddInSite addInSiteObject, bool firstTime)
-        {
-            m_inventorApplication = addInSiteObject.Application;
-
-            // Here we'll activate the individual plugins...
-            pluginHost.ActivateAll(m_inventorApplication, "7F39964A-C0DC-4BC7-948E-4B0A060256D1");
-        }
-
-        public void Deactivate()
-        {
-            // And here we'll deactivate the individual plugins...
-            pluginHost.DeactivateAll();
-
-            // Release objects.
-            m_inventorApplication = null;
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-        }
-
-        public void ExecuteCommand(int commandID) { }
-
-        public object Automation { get => null; }
-    }
-}
-```
-
----
+This is the addin class that implements the `Inventor.ApplicationAddInServer`.  It acts as the puppet master that loads the plugins via the PluginHost class.  Please find the code [here](https://github.com/InventorCode/Plugin/blob/master/demo/PluginHostDemo/PluginHostDemo.csproj).
 
 ### PluginExample
 
-As for the individual tools/plugins... the demo code for a single plugin is included below.  Think of this as a mini-addin; you can do just about anything here that you would in a full fledged addin: add event handlers, buttons, commands, ribbon interfaces, etc.
+As for the individual tools/plugins... the demo code for a single plugin is included below.  Think of this as a mini-addin; you can do just about anything here that you would in a full fledged addin: add event handlers, buttons, commands, ribbon interfaces, etc.  Please find the demo code [here](https://github.com/InventorCode/Plugin/blob/master/demo/PluginDemo/main.cs).
 
-1. For this to work wou will need to add an assembly reference `System.ComponentModel.Composition`, and
-1. install the `InventorCode.Plugin` nuget package
+## Plugin and PluginHost templates
 
-```C#
-using Inventor;
-using Microsoft.Win32;
-using System;
-using System.Runtime.Interop;
-using System.Windows.Forms;
-using InventorCode.Plugin;
-using System.ComponentModel.Composition;
+You can find templates for the Plugin and HostPlugin implementations in the following `dotnet new` [template pack](https://github.com/InventorCode/inventor-addin-templates).
 
-namespace PluginDemo
-{
-    //This attribute is required!  It is what PluginHost uses to find this plugin.
-    [Export(typeof(IPlugin))]
-    // Implement the Plugin Interface
-    public class Main : IPlugin
-    {
-
-        private Inventor.Application _inventorApplication;
-        private string _clientId;
-
-        private DockableWindow dockableWindow;
-        public void Activate(Inventor.Application InventorApplication, string ClientId, bool firstTime = true)
-        {
-            _inventorApplication = InventorApplication;
-            _clientId = ClientId;
-
-            //Create dockable window
-            dockableWindow = _inventorApplication.UserInterfaceManager.DockableWindows.Add(ClientId,
-                "dockable_window.StandardAddInServer.dockableWindow", "PluginDemo");
-            dockableWindow.ShowVisibilityCheckBox = true;
-        }
-
-        public void Deactivate()
-        {
-            _inventorApplication = null;
-        }
-
-        public void Execute()
-        {
-        }
-    }
-}
-```
+- `inv-pluginhost` template creates a bare-bones addin implementation that utilizes the InventorCode.Plugin package.
+- `inv-plugin` template creates a minimal IPlugin implementation as a new project.
