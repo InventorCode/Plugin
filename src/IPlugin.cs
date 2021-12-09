@@ -8,7 +8,7 @@
         void Execute();
 
         /// <summary>
-        /// Activates the plugin, acts as the plugin's entry point.  Synonomous with the
+        /// Activates the plugin, acts as the plugin's entry point.  Synonymous with the
         /// Inventor.StandardAddinServer.Activate() method.
         /// </summary>
         /// <param name="inventorApplication">Inventor.Application object</param>
@@ -18,7 +18,7 @@
 
         /// <summary>
         /// Deactivates the plugin, acts as the plugin's finalize/cleanup method.
-        /// Synonomous with the Inventor.StandardAddinServer.Activate() method.
+        /// Synonymous with the Inventor.StandardAddinServer.Activate() method.
         /// </summary>
         void Deactivate();
 

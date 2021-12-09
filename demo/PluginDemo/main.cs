@@ -1,5 +1,6 @@
 using Inventor;
 using InventorCode.Plugin;
+using System;
 using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows.Forms;
@@ -39,8 +40,9 @@ namespace PluginDemo
         }
 
         #region Properties
-        //Provides a place to implement a settings command from the PluginHost 
-        public CommandControl ExecuteSettings { get => null; }
+
+        //Provides a place to implement a settings command from the PluginHost
+        public CommandControl ExecuteSettings { get => null; set => throw new NotImplementedException(); }
 
         // Provides the name of your plugin.  Typically this would be set to return the
         // assembly name as shown below...
@@ -49,6 +51,7 @@ namespace PluginDemo
         // Provides the version of your plugin.  Typically this would be set to return the
         // assembly version as shown below...
         public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
-        #endregion
+
+        #endregion Properties
     }
 }
