@@ -39,7 +39,7 @@
 	</ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="InventorCode.Plugin" Version="0.5.0-alpha" />
+    <PackageReference Include="InventorCode.Plugin" Version="0.6.0" />
   </ItemGroup>
 
   <ItemGroup>
