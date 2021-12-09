@@ -30,22 +30,6 @@ namespace PluginTests
         }
 
         public string Name { get => "This is a name."; }
-        public string Description
-        {
-            get
-            {
-                var assembly = typeof(IPlugin).Assembly;
-                object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-
-                AssemblyProductAttribute attribute = null;
-                if (attributes.Length > 0)
-                {
-                    attribute = attributes[0] as AssemblyProductAttribute;
-                    return attribute.ToString();
-                }
-                return null;
-            }
-        }
         public string Version { get => "This is a version."; }
         CommandControl IPlugin.ExecuteSettings { get => null; set => throw new NotImplementedException(); }
     }

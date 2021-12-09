@@ -38,27 +38,17 @@ namespace PluginDemo
         {
         }
 
+        #region Properties
+        //Provides a place to implement a settings command from the PluginHost 
         public CommandControl ExecuteSettings { get => null; }
 
+        // Provides the name of your plugin.  Typically this would be set to return the
+        // assembly name as shown below...
         public string Name { get => Assembly.GetExecutingAssembly().GetName().Name; }
 
+        // Provides the version of your plugin.  Typically this would be set to return the
+        // assembly version as shown below...
         public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
-
-        public string Description
-        {
-            get
-            {
-                var assembly = typeof(IPlugin).Assembly;
-                object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-
-                AssemblyProductAttribute attribute = null;
-                if (attributes.Length > 0)
-                {
-                    attribute = attributes[0] as AssemblyProductAttribute;
-                    return attribute.ToString();
-                }
-                return null;
-            }
-        }
+        #endregion
     }
 }

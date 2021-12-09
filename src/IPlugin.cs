@@ -12,8 +12,6 @@
 
         string Name { get;}
 
-        string Description { get; }
-
         string Version { get; }
     }
 }
