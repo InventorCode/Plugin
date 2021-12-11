@@ -27,7 +27,7 @@ namespace PluginHostDemo
         {
         }
 
-        public Inventor.CommandControl ExecuteSettings { get => null; }
+        public Inventor.CommandControl ExecuteSettings { get; set; }
 
         public string Name { get => Assembly.GetExecutingAssembly().GetName().FullName; }
 

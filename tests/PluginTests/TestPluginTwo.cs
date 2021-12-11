@@ -32,7 +32,7 @@ namespace PluginTests
         #region IPlugin Properties
         public string Name { get => Assembly.GetExecutingAssembly().GetName().Name; }
         public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
-        public CommandControl ExecuteSettings { get => null; set => throw new NotImplementedException(); }
+        public CommandControl ExecuteSettings { get; set; }
         #endregion
     }
 }

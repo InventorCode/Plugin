@@ -31,6 +31,6 @@ namespace PluginTests
 
         public string Name { get => "This is a name."; }
         public string Version { get => "This is a version."; }
-        CommandControl IPlugin.ExecuteSettings { get => null; set => throw new NotImplementedException(); }
+        CommandControl IPlugin.ExecuteSettings { get; set; }
     }
 }

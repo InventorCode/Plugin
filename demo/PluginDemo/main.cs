@@ -42,7 +42,7 @@ namespace PluginDemo
         #region Properties
 
         //Provides a place to implement a settings command from the PluginHost
-        public CommandControl ExecuteSettings { get => null; set => throw new NotImplementedException(); }
+        public CommandControl ExecuteSettings { get; set; }
 
         // Provides the name of your plugin.  Typically this would be set to return the
         // assembly name as shown below...
