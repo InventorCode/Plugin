@@ -15,7 +15,7 @@ namespace PluginHostDemo
         {
             _inventorApplication = InventorApplication;
             _clientId = ClientId;
-            MessageBox.Show("EmbeddedPluginDemo Loaded with " + Name + " ver: " + Version) ;
+            MessageBox.Show("EmbeddedPluginDemo Loaded with " + Name + " ver: " + Version);
         }
 
         public void Deactivate()
@@ -29,7 +29,7 @@ namespace PluginHostDemo
 
         public Inventor.CommandControl ExecuteSettings { get; set; }
 
-        public string Name { get => Assembly.GetExecutingAssembly().GetName().FullName; }
+        public string Name { get => Assembly.GetExecutingAssembly().GetName().Name; }
 
         public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
     }

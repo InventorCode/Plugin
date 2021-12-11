@@ -30,14 +30,6 @@
 		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
-	<ItemGroup>
-	  <Compile Remove="EmbeddedPluginDemo.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Include="EmbeddedPluginDemo.cs" />
-	</ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="InventorCode.Plugin" Version="0.6.0" />
   </ItemGroup>
