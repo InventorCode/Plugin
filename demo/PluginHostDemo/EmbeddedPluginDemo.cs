@@ -32,22 +32,5 @@ namespace PluginHostDemo
         public string Name { get => Assembly.GetExecutingAssembly().GetName().FullName; }
 
         public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
-
-        public string Description
-        {
-            get
-            {
-                var assembly = typeof(IPlugin).Assembly;
-                object[] attributes = assembly.GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-
-                AssemblyProductAttribute attribute = null;
-                if (attributes.Length > 0)
-                {
-                    attribute = attributes[0] as AssemblyProductAttribute;
-                    return attribute.ToString();
-                }
-                return null;
-            }
-        }
     }
 }
