@@ -56,5 +56,18 @@ namespace PluginTests
 
             Assert.AreEqual(answer.Single(), "This is a version.");
         }
+
+        [Test]
+        public void PluginHost_ExecuteSettingsReturnsNull()
+        {
+            var host = new PluginHost();
+            host.ComposePlugins();
+            var plugins = host.Plugins;
+            var plugin = plugins[0];
+            var answer = plugin.ExecuteSettings;
+
+            Assert.IsNull(answer);
+        }
+
     }
 }
