@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using InventorCode.Plugin;
 using Inventor;
 using System.ComponentModel.Composition;
+using System.Reflection;
 
 namespace PluginTests
 {
@@ -27,5 +28,9 @@ namespace PluginTests
         {
             throw new NotImplementedException();
         }
+
+        public string Name { get => "This is a name."; }
+        public string Version { get => "This is a version."; }
+        CommandControl IPlugin.ExecuteSettings { get; set; }
     }
 }

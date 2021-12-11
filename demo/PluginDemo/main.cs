@@ -1,10 +1,9 @@
 using Inventor;
-using Microsoft.Win32;
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using InventorCode.Plugin;
+using System;
 using System.ComponentModel.Composition;
+using System.Reflection;
+using System.Windows.Forms;
 
 namespace PluginDemo
 {
@@ -28,7 +27,7 @@ namespace PluginDemo
         {
             _inventorApplication = InventorApplication;
             _clientId = ClientId;
-            MessageBox.Show("PluginDemo Loaded.");
+            MessageBox.Show("External PluginDemo Loaded, with " + Name + " ver: " + Version);
         }
 
         public void Deactivate()
@@ -39,5 +38,20 @@ namespace PluginDemo
         public void Execute()
         {
         }
+
+        #region Properties
+
+        //Provides a place to implement a settings command from the PluginHost
+        public CommandControl ExecuteSettings { get; set; }
+
+        // Provides the name of your plugin.  Typically this would be set to return the
+        // assembly name as shown below...
+        public string Name { get => Assembly.GetExecutingAssembly().GetName().Name; }
+
+        // Provides the version of your plugin.  Typically this would be set to return the
+        // assembly version as shown below...
+        public string Version { get => Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+
+        #endregion Properties
     }
 }
